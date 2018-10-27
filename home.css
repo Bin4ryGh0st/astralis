@@ -1,13 +1,17 @@
 BODY {
-  background: white/*#282931*/;
+  background: black/*#282931*/;
   -webkit-font-smoothing: antialiased;
   font-family: 'Varela Round', sans-serif;
   height: 100%;
   overflow:hidden;
 }
-img
-{
+img {
   color:white;
+  height:15;
+  width:15;
+  position:absolute;
+  top:18%;
+  left:15%;
 }
 canvas {
   height: 100vh;
