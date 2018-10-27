@@ -27,7 +27,7 @@ function drawWall()
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for(var i=0;i<a.length;i++)
     {
-    	if(x+dx>a[i][0]+3 && x+dx<a[i][0]+a[i][2]-3 && y+dy>a[i][1]+3 && y+dy<a[i][1]+a[i][3]-3)
+    	if(x+dx>a[i][0]+5 && x+dx<a[i][0]+a[i][2]-5 && y+dy>a[i][1]+3 && y+dy<a[i][1]+a[i][3]-3)
         	{
         		x += dx;
          		y += dy;
