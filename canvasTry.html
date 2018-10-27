@@ -13,11 +13,13 @@
 <canvas id="myCanvas" width="480" height="320"></canvas>
 
 <script>
-	var a=[[0,10,221,9],[90,40,200,9],[40,80,220,9],[40,110,250,9],[75,19,15,120],[206,10,15,100],[256,80,15,70]];
 	var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
-    var x= canvas.width/10;
-    var y=canvas.height-30;
+	var x= canvas.width/35;
+    var y=canvas.height;
+	var a=[[0,10,221,x],[90,40,200,x],[40,80,220,x],[40,110,250,x],[75,19,15,120],[206,10,15,100],[256,80,15,70]];
+	
+    
     function drawBall()
     {
     ctx.beginPath();
@@ -26,7 +28,7 @@
     ctx.fill();
     ctx.closePath();
     }
-    function drawWall(x,y,w,h)
+    function drawWall()
     {
     	for(var i=0;i<a.length;i++)
     	{
@@ -42,7 +44,7 @@
     {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBall();
-        drawWall(0,canvas.height-50,canvas.width,50);
+        drawWall();
         if(x+dx>10 && x+dx<canvas.width-10)
         {x += dx;}
         if(y+dy>10 && y+dy<canvas.height-10)
