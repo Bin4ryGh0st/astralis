@@ -17,8 +17,8 @@ function drawWall()
 	function drawBall()
     {
     ctx.beginPath();
-    ctx.arc(x, y, 3,0,Math.PI*2);
-    ctx.fillStyle = "#0095DD";
+    ctx.arc(x, y, 4,0,Math.PI*2);
+    ctx.fillStyle = "#000000";
     ctx.fill();
     ctx.closePath();
     }
