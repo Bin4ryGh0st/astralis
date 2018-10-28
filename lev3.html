@@ -15,12 +15,22 @@
 			}
 		</style>
 		<script type="text/javaScript">
+			var next1=0;
+			function showMe()
+			{
+				if(next1)
+				{
+					document.getElementById("showme").setAttribute("style","diaplay: none;");
+				}
+			}
 			function setPopulation()
 			{
+				next1=1;
 				var r = parseInt(document.getElementById("total").value);
 				document.getElementById("bribe").setAttribute("max",r);
 				document.getElementById("noofpeople").innerHTML=r;
 				plotPoints();
+				showMe();
 			}
 			function plotPoints()
 			{
@@ -58,8 +68,10 @@
 					ctx.fill();
 					ctx.closePath();
 				}
+				showMe();
 				console.log([b,nb]);
 			}	
+			
 		</script>
 	</head>
 	<body>
@@ -93,6 +105,9 @@
 		<div>
 			<p>Total time required(in mins.) to manupulate majority(atleast 51%) of data:<b id="minTime"></b></p>
 			<p>Total time required(in mins.) to manupulate selected amount of data:<b id="time"></b></p>
+		</div>
+		<div id="showme" style="display: none;">
+			<input type="button" value="proceed to simulation >>" onclick="location.href = 'simulation.html';">
 		</div>
 	</body>
 </html>
