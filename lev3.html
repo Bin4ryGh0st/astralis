@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<h1><center>Level 3: Algorithm of Consensus.</center></h1>
+		<style>
+			.outer
+			{
+				background-color: #000000;
+				opacity: 0.6;
+				top: 5%;
+				left:32%;
+				position: relative;
+				height: 60%;
+				width: 35%;
+				border-radius: 10px;
+			}
+		</style>
+		<script type="text/javaScript">
+			function setPopulation()
+			{
+				var r = parseInt(document.getElementById("total").value);
+				document.getElementById("bribe").setAttribute("max",r);
+				document.getElementById("noofpeople").innerHTML=r;
+				plotPoints();
+			}
+			function plotPoints()
+			{
+				var b=parseInt(document.getElementById("bribe").value);
+				var canvas=document.getElementById("draw");
+				var ctx=canvas.getContext("2d");
+				ctx.clearRect(0,0,500,500);
+				var t=parseInt(document.getElementById("total").value);
+				var nb=t-b;
+				document.getElementById("bribed").innerHTML=b;
+				ctx.beginPath();
+				ctx.rect(150,10,4,4);
+				ctx.fillStyle="blue";
+				ctx.fill();
+				ctx.closePath();
+				document.getElementById("time").innerHTML=(b*10);
+				document.getElementById("minTime").innerHTML=(t*5)+10;
+				for(var i=0;i<b;i++)
+				{
+					var x=Math.ceil(Math.random()*1000)%300;
+					var y=Math.ceil(Math.random()*1000)%150;
+					ctx.beginPath();
+					ctx.rect(x,y,1,1);
+					ctx.fillStyle="red";
+					ctx.fill();
+					ctx.closePath();
+				}
+				for(var i=0;i<nb;i++)
+				{
+					var x=Math.ceil(Math.random()*1000)%300;
+					var y=Math.ceil(Math.random()*1000)%150;
+					ctx.beginPath();
+					ctx.rect(x,y,1,1);
+					ctx.fillStyle="green";
+					ctx.fill();
+					ctx.closePath();
+				}
+				console.log([b,nb]);
+			}	
+		</script>
+	</head>
+	<body>
+		<div>
+			<center>
+				<div>
+					<p>
+						By your previous difficulties santa(in blue) gave you a power to send your message to many people before sending directly to santa.
+						Now,santa will collect all the messages from the people and will rely on the message which he got in majority(atleast 51% of the total).
+						Now lets assume it takes 10 minutes for your enemy to manupulate message from 1 person,Now see the calculations and defeat your enemy by this method.
+					</p>
+				<div>
+				<div>
+					<span><b>Total no. of Persons to whom data is to be send :</b></span>
+					<input id="total" type="range" min=100 max=5000 value=100 oninput="setPopulation()">
+					<span id="noofpeople">100<span>
+				</div>
+				<br>
+				<div>
+					<span><b>Total no. of persons whose data is manupulated:</b><span>
+					<input id="bribe" type="range" min=0 max=100 value=0 oninput="plotPoints()">
+					<span id="bribed">0<span>
+				</div>
+			</center>
+		</div>
+		<div>
+			<canvas class="outer" id="draw"></canvas>
+		</div>
+		<br>
+		<br>
+		<div>
+			<p>Total time required(in mins.) to manupulate majority(atleast 51%) of data:<b id="minTime"></b></p>
+			<p>Total time required(in mins.) to manupulate selected amount of data:<b id="time"></b></p>
+		</div>
+	</body>
+</html>
