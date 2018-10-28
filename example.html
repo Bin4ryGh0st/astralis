@@ -3,10 +3,49 @@
     <link rel="stylesheet" href="example.css">
     <script type="text/javascript">
       counter=1;
+      var example = ["Let me tell you a short story about a little fello called jacob . Since he could remember Jacob always wanted to get a blue cat." ,
+                      "but his parents were always finding ways to not get if for him." ,
+                      "So , one christmas , he figured out a way to finally get his dream pet" ,
+                      "He would send his wish to Santa" ,
+                      "Oh , how excited he was when he wrote the letter" ,
+                      "But Jacob was too young to take the letter to the post office by himself , so the next mosrning ,he had to ask his dad to do it for him." ,
+                      "You could say that his dad was the 'middle man' between Jacob and Santa." ,
+                      "He never imagined that , on his way to the post office , his dad would open the letter" ,
+                      "read it , and replace the blue cat on the list , with a brand new pair of socks." ,
+                      "The letter was posted to the North Pole to Santa and the elves" ,
+                      "When they recieved it , they started working right away making Jacob's gift . " ,
+                      "So , that year Jacob recieved an adorable pair of socks" ,
+                      "But next Christmas , Jacob decided to use the Blockchain" ,
+                      "Jacob wrote exactly the same letter" ,
+                      "but instead of giving it to his mum or dad to deliver" ,
+                      "he directly uploaded it to 'North Pole Blockchain' " ,
+                      "",
+                      "The 'North Pole Blockchain' is made up of a lot of computers , connected to one another through the Internet, that all stores a copy of everyones Christmas list. The network is being monitored at the same time by all the elves , Santa himself , and even people like Jacob's parents." ,
+                      "Every time a new letter is recieved , it is saved onto every individual computer " ,
+                      "so everyone has the exactly same copy ." ,
+                      "As the blockchain is an open network , everyone can see all the letters ," ,
+                      "even though it's impossible to know to whom each one belongs to." ,
+                      "But when Jacob's parents saw that there was a letter asking for a blue cat ," ,
+                      "it wasn't hard for them to know that it was from Jacob" ,
+                      "So , once again , they changed it ,this time for a cookbook ." ,
+                      "But as evey other node has a copy of Jacob's real letter" ,
+                      "the change was spotted" ,
+                      "and the computer trying to make the change was cut off from the network " ,
+                      "meaning Jacob's real letter remained unchanged." ,
+                      "So , guess what Jacob recieved that year for Christmas"]
       function move_right()
         {
           counter ++;
-          document.getElementById("keshav").src = "images/image" + counter + ".png";
+          if(counter<=30)
+            {
+              document.getElementById("keshav").src = "images/image" + counter + ".png";
+              document.getElementById("bathla").innerHTML = example[counter-1];
+            }
+          if(counter>=31)
+            {
+              counter=30;
+              return;
+            }
         }
       function move_left()
         {
@@ -14,6 +53,7 @@
           if(counter>=1)
             {
               document.getElementById("keshav").src = "images/image" + counter + ".png";
+              document.getElementById("bathla").innerHTML = example[counter-1];
             }
           if(counter<=0)
             {
@@ -31,7 +71,7 @@
       <div id="" class="column middle">
         <img src="images/image1.png" style='height: 100%; width: 100%; object-fit: contain' id="keshav">
         <div>
-          <p>Keshav</p>
+          <p id="bathla" style='color: white;'>Let me tell you a short story about a little fello called jacob . Since he could remember Jacob always wanted to get a blue cat.</p>
         </div>
       </div>
       <div class="column right" onclick="move_right()">
