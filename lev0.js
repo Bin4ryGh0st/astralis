@@ -6,6 +6,7 @@ var y= a[0][1]+4;
 var attack=0;
 var message = "Santa please bring chocolates!!";
 var tempm=message;
+//document.getElementById("next").disabled=true;
 function drawWall()
 {
 	for(var i=0;i<a.length;i++)
