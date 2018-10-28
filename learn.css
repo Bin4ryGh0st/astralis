@@ -3,7 +3,7 @@ body{
 }
 
 .heading_box{
-  margin-left: 130px;
+  margin-left: 260px;
   margin-top: 30px;
   width: 1100px;
   height: 200px;
@@ -16,17 +16,15 @@ body{
   color: white;
 }
 
-.arrow-box{
-  margin-left: 600px;
-  margin-top: 200px;
+.example_button{
+  border: none;
+	color: #FFFF;
+	text-align: center;
+	width: 200px;
+	height: 60px;
+	position: relative;
+	left: 300px;
+	background: #d64161;
+	top: 8px;
+  border-radius: 25px;
 }
-
-.arrow{
-  border: solid white;
-  border-width: 0 5px 5px 0;
-  display: inline-block;
-  padding: 15px;
-  transform: rotate(45deg);
-  opacity: 1.5;
-}
-
