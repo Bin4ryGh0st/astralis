@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="example.css">
+    <script type="text/javascript">
+      counter=1;
+      function move_right()
+        {
+          counter ++;
+          document.getElementById("keshav").src = "images/image" + counter + ".png";
+        }
+      function move_left()
+        {
+          counter --;
+          if(counter>=1)
+            {
+              document.getElementById("keshav").src = "images/image" + counter + ".png";
+            }
+          if(counter<=0)
+            {
+              counter=1;
+              return;
+            }
+          }
+    </script>
+  </head>
+  <body>
+    <div>
+      <div class="column left" onclick="move_left()">
+        <div id="arrow_1" class="arrow_1"></div>
+      </div>
+      <div id="" class="column middle">
+        <img src="images/image1.png" style='height: 100%; width: 100%; object-fit: contain' id="keshav">
+        <div>
+          <p>Keshav</p>
+        </div>
+      </div>
+      <div class="column right" onclick="move_right()">
+        <div id="arrow_2" class="arrow_2"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
