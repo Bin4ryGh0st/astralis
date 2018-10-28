@@ -1,5 +1,5 @@
 a=[[0,10,221,9],[75,40,200,9],[40,110,230,9],[75,10,15,129],[206,10,15,109],[256,80,15,70],[40,80,232,9]];
-b=[[40,80,232,9,232,9]];
+b=[[40,80,25,9]];
 var canvas = document.getElementById("draw");
 var ctx = canvas.getContext("2d");
 var x= a[0][0]+4;
@@ -30,13 +30,13 @@ function changeWidth()
     if( typeof changeWidth.c == 'undefined' ) {
         changeWidth.c = 2;
     }
-    if(b[0][2]+changeWidth.c>b[0][4] || b[0][2]+changeWidth.c<b[0][0] )
+    if(b[0][0]+changeWidth.c>a[6][2] || b[0][0]+changeWidth.c<a[6][0] )
     {
         changeWidth.c=-changeWidth.c;
     }
     
-    ctx.clearRect(b[0][0],b[0][1],b[0][2],b[0][3]);
-    b[0][2]+=changeWidth.c;
+    ctx.clearRect(a[6][0],a[6][1],a[6][2],a[6][3]);
+    b[0][0]+=changeWidth.c;
     ctx.beginPath();
     ctx.rect(b[0][0],b[0][1],b[0][2],b[0][3]);
     ctx.fillStyle="red";
