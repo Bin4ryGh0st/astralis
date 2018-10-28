@@ -7,6 +7,8 @@ var y= a[0][1]+4;
 var attack=0;
 var message = "Santa please bring chocolates!!";
 var tempm=message;
+var flag=0,mov=4;
+//document.getElementById("button").setAttribute("style", "display:none;");
 //document.getElementById("next").disabled=true;
 function drawWall()
 {
@@ -30,7 +32,7 @@ function changeWidth()
     if( typeof changeWidth.c == 'undefined' ) {
         changeWidth.c = 2;
     }
-    if(b[0][0]+changeWidth.c>a[6][2] || b[0][0]+changeWidth.c<a[6][0] )
+    if(b[0][0]+changeWidth.c+b[0][2]>a[6][2]+a[6][0] || b[0][0]+changeWidth.c<a[6][0] )
     {
         changeWidth.c=-changeWidth.c;
     }
@@ -81,11 +83,24 @@ function draw(dx, dy)
          		y += dy;
          		break;
         	}
-        	console.log([x,y]);
+    }
+    if(y+8>canvas.height)
+    {
+        console.log("check");
+         x= a[0][0]+4;
+         y= a[0][1]+4;
+        message="Santa please bring chocolates!!";
+        b[0][2]+=25;
+        if(flag==1)
+        {
+            mov=0;
+            message="";
+            //document.getElementById("but").setAttribute("style", "display:none;");
+        }
+
     }
     for(var i=0;i<b.length;i++)
     {
-        console.log([b[i][0],b[i][0]+b[i][2],b[i][1],b[i][1]+b[i][3]]);
     if(( x>b[i][0] && x<b[i][0]+b[i][2]) && (y>b[i][1] && y<b[i][1]+b[i][3]))
     {
     	//alert("curropt");
@@ -95,6 +110,7 @@ function draw(dx, dy)
     	print(message);
     	document.getElementById("ch").setAttribute("src","angrysanta.jpeg");
     	document.getElementById("unblockit").setAttribute("style","display: block;");
+        flag=1;
     	return;
     }
     }
@@ -112,16 +128,16 @@ function draw(dx, dy)
     switch(keycode)
     {
         case 38:
-            draw(0,-2);
+            draw(0,-mov/2);
             break;
         case 40:
-            draw(0,2);
+            draw(0,mov/2);
             break;
         case 37:
-            draw(-4,0);
+            draw(-mov,0);
             break;
         case 39:
-            draw(4,0);
+            draw(mov,0);
             break;
     }
 
