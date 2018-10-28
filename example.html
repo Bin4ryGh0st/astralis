@@ -36,10 +36,17 @@
       function move_right()
         {
           counter ++;
-          if(counter<=30)
+          if(counter<=29)
             {
               document.getElementById("keshav").src = "images/image" + counter + ".png";
               document.getElementById("bathla").innerHTML = example[counter-1];
+              document.getElementById("game_button").style.visibility = 'hidden';
+            }
+          if(counter==30)
+            {
+              document.getElementById("keshav").src = "images/image" + counter + ".png";
+              document.getElementById("bathla").innerHTML = example[counter-1];
+              document.getElementById("game_button").style.visibility = 'visible';
             }
           if(counter>=31)
             {
@@ -54,6 +61,7 @@
             {
               document.getElementById("keshav").src = "images/image" + counter + ".png";
               document.getElementById("bathla").innerHTML = example[counter-1];
+              document.getElementById("game_button").style.visibility = 'hidden';
             }
           if(counter<=0)
             {
@@ -72,12 +80,16 @@
         <img src="images/image1.png" style='height: 100%; width: 100%; object-fit: contain' id="keshav">
         <div>
           <p id="bathla" style='color: white;'>Let me tell you a short story about a little fello called jacob . Since he could remember Jacob always wanted to get a blue cat.</p>
+          <input type="submit"  id="game_button" class="example_button" value="Lets Play A game" onclick="location.href='lev0.html'" >
         </div>
       </div>
       <div class="column right" onclick="move_right()">
         <div id="arrow_2" class="arrow_2"></div>
       </div>
     </div>
+    <script>
+      document.getElementById("game_button").style.visibility = 'hidden';
+    </script>
 
   </body>
 </html>
