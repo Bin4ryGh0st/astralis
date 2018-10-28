@@ -16,72 +16,159 @@
 	</head>
 	<body>
 		<canvas id="draw">
-		</canvas>
+		</canvas><br />
+		<p id="p">message:</p><textarea id="prev">hello world</textarea><br />
+		<p id="p2">new message</p><textarea id="new">hi god</textarea>
 		<script type="text/javaScript">
-			a=[[0,25,270,9],[30,120,270,9],[50,10,15,130],[235,10,15,130]];
-			var canvas = document.getElementById("draw");
-			var ctx = canvas.getContext("2d");
-			var x= a[0][0]+4;
-		    var y= a[0][1]+4;
-			function drawWall()
-			{
-				for(var i=0;i<a.length;i++)
-				{
-					ctx.beginPath();
-					ctx.rect(a[i][0],a[i][1],a[i][2],a[i][3]);
-					ctx.fillStyle="#ffffff";
-					ctx.fill();
-					ctx.closePath();
-				}
-			}
-			function drawBall()
-			{
-			ctx.beginPath();
-			ctx.arc(x, y, 4,0,Math.PI*2);
-			ctx.fillStyle = "#000000";
-			ctx.fill();
-			ctx.closePath();
-			}
-			function draw(dx, dy) 
-			{
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			for(var i=0;i<a.length;i++)
-			{
-				if(x+dx>a[i][0]+5 && x+dx<a[i][0]+a[i][2]-5 && y+dy>a[i][1]+3 && y+dy<a[i][1]+a[i][3]-3)
-					{
-						x += dx;
-				 		y += dy;
-				 		break;
-					}
-			}
-			drawWall();
-			drawBall();
-		   
-			}
-			function checkKeycode(event) {
-			// handling Internet Explorer stupidity with window.event
-			// @see http://stackoverflow.com/a/3985882/517705
-			var keyDownEvent = event || window.event,
-				keycode = (keyDownEvent.which) ? keyDownEvent.which : keyDownEvent.keyCode;
-			switch(keycode)
-			{
-				case 38:
-					draw(0,-2);
-					break;
-				case 40:
-					draw(0,2);
-					break;
-				case 37:
-					draw(-4,0);
-					break;
-				case 39:
-					draw(4,0);
-					break;
-			}
+			a=[[0,10,221,9],[75,40,200,9],[40,110,230,9],[75,10,15,129],[206,10,15,109],[256,80,15,70],[40,80,232,9]];
+b=[[40,80,25,9]];
+var canvas = document.getElementById("draw");
+var ctx = canvas.getContext("2d");
+var x= a[0][0]+4;
+var y= a[0][1]+4;
+var cx=x,cy=y;
+var attack=0;
+var message = "Santa please bring chocolates!!";
+var tempm=message;
+var no=10;
+//document.getElementById("next").disabled=true;
+function drawWall()
+{
+	for(var i=0;i<a.length;i++)
+	{
+		ctx.beginPath();
+		ctx.rect(a[i][0],a[i][1],a[i][2],a[i][3]);
+		ctx.fillStyle="#ffffff";
+        ctx.fill();b[0][0]
+		ctx.closePath();
+	}
+	if( typeof drawWall.c == 'undefined' ) {
+        drawWall.c = 2;
+    }
+    if(b[0][0]+drawWall.c>a[6][2] || b[0][0]+drawWall.c<a[6][0] )
+    {
+        drawWall.c=-drawWall.c;
+    }
+    b[0][0]+=drawWall.c;
+    ctx.beginPath();
+    ctx.rect(b[0][0],b[0][1],b[0][2],b[0][3]);
+    ctx.fillStyle="red";
+    ctx.fill();
+    ctx.closePath();
+    drawBall(0,0);
+	print(message);
+}
+function drawBall(dx,dy)
+{
+	 //	ctx.clearRect(x, y, 4, 4);
+	 if(dx!=0 || dy!=0)
+	 {
+	for(var i=0;i<a.length;i++)
+    {
+    	if(x+dx>a[i][0]+5 && x+dx<a[i][0]+a[i][2]-5 && y+dy>a[i][1]+3 && y+dy<a[i][1]+a[i][3]-3)
+        	{
+        		for(var i=no-1;i>=1;i--)
+        		{
+        			drawBall.c[i][0]=drawBall.c[i-1][0];
+        			drawBall.c[i][1]=drawBall.c[i-1][1];
+        		}
+        		drawBall.c[0][0]=x;
+        		drawBall.c[0][1]=y;
+        		x += dx;
+         		y += dy;
 
-			return false;
-			}
-		  	document.onkeydown = checkKeycode;
+         		break;
+        	}
+    }
+    }
+    for(var i=0;i<b.length;i++)
+    {
+    if(( x>b[i][0] && x<b[i][0]+b[i][2]) && (y>b[i][1] && y<b[i][1]+b[i][3]))
+    {
+    	//alert("curropt");
+    	attack=1;
+    	drawWall();
+    	message="Santa I hate you!!";
+    	print(message);
+    	//document.getElementById("ch").setAttribute("src","angrysanta.jpeg");
+    	//document.getElementById("unblockit").setAttribute("style","display: block;");
+    }
+    }
+	if(typeof drawBall.c=='undefined')
+	{
+		drawBall.c=[];
+		for(var i=0;i<no;i++)
+		{
+		drawBall.c[i]=[x,y];
+		}
+	}
+	
+    db(x,y);
+    for(var i=0;i<no;i++)
+    {
+    	db(drawBall.c[i][0], drawBall.c[i][1]);
+    }
+}
+function db(cx,cy)
+{
+	ctx.beginPath();
+    ctx.arc(cx, cy, 2,0,Math.PI*2);
+    ctx.fillStyle = "#000000";
+    ctx.fill();
+    ctx.closePath();
+}
+function print(m)
+{
+	var n=document.getElementById("new");
+	var pre=document.getElementById("prev")
+	var p2=document.getElementById("p2");
+	var p=document.getElementById("p");
+	p2.style.display="none";
+	n.style.display="none";
+	if(m==tempm)
+	{
+		console.log="check";
+		pre.innerHTML=m;
+	}
+	else
+	{
+		p.innerHTML="previous message";
+		p2.style.display="block";
+		n.style.display="block";
+		pre.innerHTML=tempm;
+		n.innerHTML=m;
+	} 
+}
+    function checkKeycode(event) {
+    // handling Internet Explorer stupidity with window.event
+    // @see http://stackoverflow.com/a/3985882/517705
+    var keyDownEvent = event || window.event,
+        keycode = (keyDownEvent.which) ? keyDownEvent.which : keyDownEvent.keyCode;
+    switch(keycode)
+    {
+        case 38:
+
+            drawBall(0,-2);
+            break;
+        case 40:
+
+            drawBall(0,2);
+            break;
+        case 37:
+
+            drawBall(-4,0);
+            break;
+        case 39:
+
+            drawBall(4,0);
+            break;
+    }
+
+    return false;
+    }
+    
+  	document.onkeydown = checkKeycode;
+    setInterval(drawWall, 10);
 		</script>
 	</body>
 </html>
