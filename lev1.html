@@ -30,6 +30,7 @@ var cx=x,cy=y;
 var attack=0;
 var message = "Santa please bring chocolates!!";
 var tempm=message;
+var no=10;
 //document.getElementById("next").disabled=true;
 function drawWall()
 {
@@ -66,12 +67,13 @@ function drawBall(dx,dy)
     {
     	if(x+dx>a[i][0]+5 && x+dx<a[i][0]+a[i][2]-5 && y+dy>a[i][1]+3 && y+dy<a[i][1]+a[i][3]-3)
         	{
-        		drawBall.x3=drawBall.x2;
-				drawBall.y3=drawBall.y2;
-				drawBall.x2=drawBall.x1;
-				drawBall.y2=drawBall.y1;
-				drawBall.x1=x;
-				drawBall.y1=y;
+        		for(var i=no-1;i>=1;i--)
+        		{
+        			drawBall.c[i][0]=drawBall.c[i-1][0];
+        			drawBall.c[i][1]=drawBall.c[i-1][1];
+        		}
+        		drawBall.c[0][0]=x;
+        		drawBall.c[0][1]=y;
         		x += dx;
          		y += dy;
 
@@ -92,38 +94,29 @@ function drawBall(dx,dy)
     	//document.getElementById("unblockit").setAttribute("style","display: block;");
     }
     }
-	if(typeof drawBall.x1=='undefined')
+	if(typeof drawBall.c=='undefined')
 	{
-		drawBall.x1=x;
-		drawBall.y1=y;
-		drawBall.x2=x;
-		drawBall.y2=y;
-		drawBall.x3=x;
-		drawBall.y3=y;
+		drawBall.c=[];
+		for(var i=0;i<no;i++)
+		{
+		drawBall.c[i]=[x,y];
+		}
 	}
 	
-    ctx.beginPath();
-    ctx.arc(x, y, 2,0,Math.PI*2);
-    ctx.fillStyle = "#000000";
-    ctx.fill();
-    ctx.closePath();
-    ctx.beginPath();
-    ctx.arc(drawBall.x1, drawBall.y1, 2,0,Math.PI*2);
-    ctx.fillStyle = "#000000";
-    ctx.fill();
-    ctx.closePath();
-    ctx.beginPath();
-    ctx.arc(drawBall.x2, drawBall.y2, 2,0,Math.PI*2);
-    ctx.fillStyle = "#000000";
-    ctx.fill();
-    ctx.closePath();
-    ctx.beginPath();
-    ctx.arc(drawBall.x3, drawBall.y3, 2,0,Math.PI*2);
+    db(x,y);
+    for(var i=0;i<no;i++)
+    {
+    	db(drawBall.c[i][0], drawBall.c[i][1]);
+    }
+}
+function db(cx,cy)
+{
+	ctx.beginPath();
+    ctx.arc(cx, cy, 2,0,Math.PI*2);
     ctx.fillStyle = "#000000";
     ctx.fill();
     ctx.closePath();
 }
-
 function print(m)
 {
 	var n=document.getElementById("new");
