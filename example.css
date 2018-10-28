@@ -47,3 +47,16 @@ body{
   margin-left: -200px;
   margin-top: 100px;
 }
+
+.example_button{
+  border: none;
+	color: #FFFF;
+	text-align: center;
+	width: 200px;
+	height: 60px;
+	position: relative;
+	left: 300px;
+	background: #d64161;
+	top: 8px;
+  border-radius: 25px;
+}
