@@ -1,0 +1,11 @@
+.outer
+{
+	background-color: #000000;
+	opacity: 0.6;
+	left:32%;
+	position: relative;
+	height: 60%;
+	width: 35%;
+	border-radius: 10px;
+}
+
